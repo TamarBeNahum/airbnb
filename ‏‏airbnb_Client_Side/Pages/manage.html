@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>apartments by fields</title>
+    <!--bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--the ajax call file-->
+    <script src="../JS/ajaxCalls.js"></script>
+
+    <!--the CSS file-->
+    <link href="../CSS/StyleSheet.css" rel="stylesheet" />
+
+    <!--J-query-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!--sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+
+    <script>
+
+        function init() {
+            //////////////// bootstrap container /////////////////////
+            let container = document.createElement("div");
+            document.body.appendChild(container);
+            container.className = "container";
+
+            //////////////// creating the header /////////////////////
+            let header = '<div class="row header_row"> <div class="col-6" id="col_header_left"></div> <div class="col sm-6 md-12" id="col_header_right">  </div> </div>';
+            container.innerHTML = header;
+
+            //add logo into the header
+            let btn_return = document.createElement("input");
+            btn_return.type = "button";
+            btn_return.value = "back to menu";
+            btn_return.className = "btn_return";
+            btn_return.onclick = function () {
+                window.location = "index.html";
+            }
+            document.getElementById("col_header_right").appendChild(btn_return);
+
+            document.getElementById("col_header_left").innerHTML += '<img src="../images/Airbnb-logo.png" />';
+            document.getElementById("col_header_left").style.textAlign = "left";
+
+
+            //////////////// added button to the other page into the header///////////////
+
+            //div for all of the buttons - row
+            let btns_div = document.createElement("div");
+            container.appendChild(btns_div);
+            btns_div.className = "row";
+            btns_div.style.textAlign = "center";
+
+            //The hierarchy of the divs with bootstrap into the btns_div by 3 cols :
+            btns_div.innerHTML += "<div class='col' id='col_1'></div >"
+            btns_div.innerHTML += "<div class='col'> <div id='col_2_row_1'> </div> <div id='col_2_row_2'></div> <div id='col_2_row_3'></div> </div> "
+            btns_div.innerHTML += "<div class='col'> <div id='col_3_row_1'> </div> <div id='col_3_row_2'> </div> <div id='col_3_row_3'> </div><div id='col_3_row_4'> </div> <div id='col_3_row_5'> </div></div > ";
+
+            //div for the render caerds
+            let div_render_flats_row = document.createElement("div");
+            div_render_flats_row.className = "row render_cards_div";
+            container.appendChild(div_render_flats_row);
+
+            //////////////add first button//////////////
+            let btn_GetAll = document.createElement("input");
+            btn_GetAll.type = "button";
+            btn_GetAll.className = "btn_header";
+            btn_GetAll.style.lineHeight = "38px";
+            btn_GetAll.value = "Get all of the apartments";
+            btn_GetAll.onmousedown = function () {
+                this.style.backgroundColor = "#fd5c63";
+            }
+            btn_GetAll.onmouseup = function () {
+                this.style.backgroundColor = "#FFC0CB";
+            }
+
+            btn_GetAll.onclick = function () {
+                document.getElementById("text_for_city").value = "";
+                document.getElementById("number_for_rating").value = "";
+                document.getElementById("number_GetByPrice").value = "";
+                delete_err_fields();
+                let api = "https://localhost:7157/api/Flats";
+                ajaxCall("GET", api, "", successCB, errorCB);
+            }
+            document.getElementById("col_1").appendChild(btn_GetAll);
+
+            ///////////////secound button & his number field///////////////
+            let btn_GetByPrice = document.createElement("input");
+            btn_GetByPrice.type = "button";
+            btn_GetByPrice.className = "btn_header";
+            btn_GetByPrice.style.lineHeight = "38px";
+            btn_GetByPrice.value = "Get apartments by price";
+
+            btn_GetByPrice.onmousedown = function () {
+                this.style.backgroundColor = "#fd5c63";
+            }
+            btn_GetByPrice.onmouseup = function () {
+                this.style.backgroundColor = "#FFC0CB";
+            }
+            document.getElementById("col_2_row_1").appendChild(btn_GetByPrice);
+
+            //create the "price" span & the number field for the button
+            let price_div = document.createElement("span");
+            price_div.innerText = "Enter price: ";
+            document.getElementById("col_2_row_2").appendChild(price_div);
+
+            let number_GetByPrice = document.createElement("input");
+            number_GetByPrice.type = "number";
+            number_GetByPrice.id = "number_GetByPrice";
+            document.getElementById("col_2_row_2").appendChild(number_GetByPrice);
+
+            document.getElementById("col_2_row_3").style.marginBottom = "20px";
+            //on click - render the flats by the controller "GetByPrice"
+            btn_GetByPrice.onclick = function () {
+                delete_err_fields();
+                document.getElementById("text_for_city").value = "";
+                document.getElementById("number_for_rating").value = "";
+                let price = document.getElementById("number_GetByPrice").value;
+                if (price == "") {
+                    document.getElementById("col_2_row_3").innerText = "The price field can not be empty";
+                    return;
+                }
+                if (price <= 0) {
+                    document.getElementById("col_2_row_3").innerText = "Price cannot be negative or zero";
+                    return;
+                }
+                const api = `https://localhost:7157/api/Flats/GetByPrice?price=${price}`;
+                ajaxCall("GET", api, "", successCB, errorCB);
+            }
+
+
+            ///////////////third button & his 2 numbers fields////////////
+            let btn_GetByCityRating = document.createElement("input");
+            btn_GetByCityRating.type = "button";
+            btn_GetByCityRating.className = "btn_header";
+            btn_GetByCityRating.style.lineHeight = "38px";
+            btn_GetByCityRating.value = "Get apartments by city & rating";
+            btn_GetByCityRating.onmousedown = function () {
+                this.style.backgroundColor = "#fd5c63";
+            }
+            btn_GetByCityRating.onmouseup = function () {
+                this.style.backgroundColor = "#FFC0CB";
+            }
+            document.getElementById("col_3_row_1").appendChild(btn_GetByCityRating);
+
+            //create the 2 spans & the numbers fields for the button
+            let city_span = document.createElement("span");
+            city_span.innerText = "Enter city: ";
+            document.getElementById("col_3_row_2").appendChild(city_span);
+
+            let text_for_city = document.createElement("input");
+            text_for_city.type = "text";
+            text_for_city.id = "text_for_city";
+            document.getElementById("col_3_row_2").appendChild(text_for_city);
+
+            let rating_span = document.createElement("span");
+            rating_span.innerText = "Enter rating: ";
+            document.getElementById("col_3_row_4").appendChild(rating_span);
+
+            let number_for_rating = document.createElement("input");
+            number_for_rating.type = "number";
+            number_for_rating.id = "number_for_rating";
+            document.getElementById("col_3_row_4").appendChild(number_for_rating);
+
+            document.getElementById("col_3_row_5").style.marginBottom = "20px";
+            //on click - render the flats by the controller "GetByCityRating"
+            btn_GetByCityRating.onclick = function () {
+                delete_err_fields();
+                document.getElementById("number_GetByPrice").value = ""
+                let city = document.getElementById("text_for_city").value;
+                let rating = document.getElementById("number_for_rating").value;
+                //check the city input text is not empty only letters
+                if (city == "" && rating == "") {
+                    document.getElementById("col_3_row_3").innerText = "The city field can not be empty";
+                    document.getElementById("col_3_row_5").innerText = "The rating field can not be empty";
+                    return;
+                }
+                if (city == "") {
+                    document.getElementById("col_3_row_3").innerText = "The city field can not be empty";
+                    return;
+                }
+                var letters = /^[a-zA-Zא-ת\s]+$/;
+                if (!city.match(letters) || !isNaN(city)) {
+                    document.getElementById("col_3_row_3").innerText = "Please enter only letters and spaces";
+                    return;
+                }
+                //check the rating input number is not empty and only between 0 to 5
+                if (rating == "") {
+                    document.getElementById("col_3_row_5").innerText = "The rating field can not be empty";
+                    return;
+                }
+                if (rating < 1 || rating > 5) {
+                    document.getElementById("col_3_row_5").innerText = "Rating can be number between 1 to 5 only";
+                    return;
+                }
+                let api = `https://localhost:7157/api/Flats/GetCR/City/${city}/Rating/${rating}`;
+                ajaxCall("GET", api, "", successCB, errorCB);
+            }
+            //////////// for the ajax GRT calls /////////////
+
+            function successCB(data) {
+                if (data == null || (Array.isArray(data) && data.length === 0)) {
+                    div_render_flats_row = document.getElementsByClassName("render_cards_div")[0];
+                    div_render_flats_row.innerHTML = "";
+                    div_render_flats_col = document.createElement("div");
+                    div_render_flats_col.classList = "col div_revder_col";
+                    div_render_flats_col.innerHTML = "No apartments found";
+                    div_render_flats_row.appendChild(div_render_flats_col);
+                    return;
+                }
+                if (Array.isArray(data)) {
+                    renderCards(data);
+                }
+                //for the 'delete flat'
+                if (data == true) {
+                    Swal.fire('The apartment has been deleted from the data', 'Render all the flats again', 'success').
+                        then(function (result) { btn_GetAll.click(); });                    
+                }
+
+            }
+            function errorCB(err) {
+                console.log(err);
+            }
+
+            function delete_err_fields() {
+                document.getElementById("col_2_row_3").innerText = "";
+                document.getElementById("col_3_row_3").innerText = "";
+                document.getElementById("col_3_row_5").innerText = "";
+            }
+
+
+            function renderCards(arr) {
+                delete_err_fields();
+                div_render_flats_row = document.getElementsByClassName("render_cards_div")[0];
+                div_render_flats_row.innerHTML = "";
+                for (var i of arr) {
+                    let div_col = document.createElement("div");
+                    if (arr.length == 1) {
+                        div_col.classList += "col mb-3";
+                        div_render_flats_row.style.paddingLeft = "50px";
+                        div_render_flats_row.style.paddingRight = "50px";
+                    }
+                    else if (arr.length == 2) {
+                        div_col.classList += "col-12 col-sm-6 mb-3";
+                        div_render_flats_row.style.paddingLeft = "50px";
+                        div_render_flats_row.style.paddingRight = "50px";
+                    }
+                    else if (arr.length == 3) { div_col.classList += "col-12 col-md-4 mb-3"; }
+                    else { div_col.classList += "col-12 col-sm-6 col-md-4 col-lg-3 mb-3"; }
+                    div_render_flats_row.appendChild(div_col);
+
+                    //create the card
+                    let card = document.createElement("div");
+                    card.classList += "card border-danger";
+                    div_col.appendChild(card);
+
+                    //create the card-body
+                    let card_body = document.createElement("div");
+                    card_body.classList += "card-body";
+                    card.appendChild(card_body);
+
+                    //create & show the flat image
+                    let img_div = document.createElement("div");
+                    img_div.style.textAlign = "center";
+                    let f_img = document.createElement("img");
+                    f_img.src = i.imgUrl;
+                    f_img.className = "cardImg";
+                    card_body.appendChild(img_div);
+                    img_div.appendChild(f_img);
+
+                    //show the flat title
+                    let div_title = document.createElement("div");
+                    div_title.className = "div_card_title";
+                    div_title.innerText = i.apartmentName;
+                    card_body.appendChild(div_title);
+
+                    //show the flat rating
+                    let div_rating = document.createElement("div");
+                    div_rating.style.textAlign = "center";
+                    let rating_img = document.createElement("img");
+                    rating_img.classList += "rating_img";
+
+                    rating_img.src = renderStars(i.reviewScore);
+
+                    div_rating.appendChild(rating_img);
+                    div_rating.innerHTML += "<span>" + i.reviewScore + "/5</span>";
+                    card_body.appendChild(div_rating);
+
+                    //show the litle details of the flat
+                    let div_detaild = document.createElement("div");
+
+                    div_detaild.innerHTML = "<u>Id</u>: " + i.id + "<br> <u>City</u>: Amsterdam <br> <u>addres</u>: "
+                        + i.address + "<br> <u>number of bedrooms</u>: " + i.numOfRooms + "<br> <u>Price</u>: " + i.price + " $<br> <u>description</u>: ";
+                    card_body.appendChild(div_detaild);
+
+                    //show the description of the flat
+                    let div_des = document.createElement("div");
+                    div_des.innerHTML = i.description;
+                    div_des.className = "description_divs";
+                    card_body.appendChild(div_des);
+
+                    //create & show the button to add the flat
+                    let div_btn_deleteFlat = document.createElement("div");
+                    div_btn_deleteFlat.style.textAlign = "center";
+                    div_btn_deleteFlat.id = "div_btn_footer";
+                    let btn_deleteFlat = document.createElement("input");
+                    btn_deleteFlat.type = "button";
+                    btn_deleteFlat.className = "btn_addFlat";
+                    btn_deleteFlat.value = "DELETE the apartment";
+
+                    btn_deleteFlat.onmousedown = function () {
+                        this.style.backgroundColor = "#FBCEB1";
+                    }
+                    btn_deleteFlat.onmouseup = function () {
+                        this.style.backgroundColor = "#FFE7E7";
+                    }
+
+                    //using closure to create a new lexical scope for each iteration of the loop
+                    // which captures the current value of i and associates it with the button click event.
+                    btn_deleteFlat.onclick = (function (flat) {
+                        return function () {
+                            const api = `https://localhost:7157/api/Flats/${flat.id}`;
+                            ajaxCall("DELETE", api, "", successCB, errorCB);
+                        };
+                    })(i);
+
+                    div_btn_deleteFlat.appendChild(btn_deleteFlat);
+                    //for the footer button
+                    card_body.appendChild(div_btn_deleteFlat);
+                    let space_div = document.createElement("div");
+                    space_div.style.height = "35px";
+                    card_body.appendChild(space_div);
+                }
+
+                function renderStars(rate_num) {
+                    if (rate_num == 1) { return "../images/rating_1.png" }
+                    else if (rate_num == 2) { return "../images/rating_2.png" }
+                    else if (rate_num == 3) { return "../images/rating_3.png" }
+                    else if (rate_num > 3.40 && rate_num < 3.6) { return "../images/rating_3.5.png" }
+                    else if (rate_num >= 4 && rate_num < 4.10) { return "../images/rating_4.png" }
+                    else if (rate_num >= 4.10 && rate_num < 4.25) { return "../images/rating_4.2.png" }
+                    else if (rate_num >= 4.25 && rate_num < 4.40) { return "../images/rating_4.3.png" }
+                    else if (rate_num >= 4.40 && rate_num < 4.60) { return "../images/rating_4.5.png" }
+                    else if (rate_num >= 4.60 && rate_num < 4.90) { return "../images/rating_4.7.png" }
+                    else if (rate_num >= 4.90 && rate_num < 4.97) { return "../images/rating_4.9.png" }
+                    else if (rate_num >= 4.97 && rate_num <= 5) { return "../images/rating_5.png" }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+   
+
+
+</body>
+</html>

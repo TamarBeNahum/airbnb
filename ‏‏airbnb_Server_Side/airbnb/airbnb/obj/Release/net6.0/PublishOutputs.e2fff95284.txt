@@ -1,0 +1,11 @@
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\airbnb.exe
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\airbnb.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\airbnb.deps.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\airbnb.runtimeconfig.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\airbnb.pdb
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

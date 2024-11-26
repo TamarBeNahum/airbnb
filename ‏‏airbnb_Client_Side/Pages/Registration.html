@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration form</title>
+    <!--bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--CSS-->
+    <link href="../CSS/StyleSheetForm.css" rel="stylesheet" />
+
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!--ajax call-->
+    <script src="../JS/ajaxCalls.js"></script>
+
+    <!--sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        $(document).ready(function () {            
+            $('#menuBtn').click(function () {
+                window.location = "WelcomePage.html";
+            });
+
+            $("#mainForm").submit(submitToTheServer);
+        });
+
+        function submitToTheServer() {
+            creatAndAddeUser();
+            return false;
+        }
+
+        function creatAndAddeUser() {
+            User = {
+                name: $("#name").val(),
+                id: $("#id").val(),
+                country: $("#country").val(),
+                email: $("#email").val(),
+                password: $("#password").val(),
+                phoneNumber: $("#phoneNumber").val()
+            }
+            //save the current user in the local storage
+            localStorage.setItem("current user", JSON.stringify(User));
+
+            const api = "https://localhost:7157/api/Users";
+            ajaxCall("POST", api, JSON.stringify(User), successCB, errorCB);
+        }
+
+        function successCB(data) {
+            if (data == true) {
+                Swal.fire('You have successfully registered!', 'you will be directed to the home page...★', 'success').
+                    then(function (result) { window.location = "index.html"; });
+            }
+            //if the user alredy exist
+            if (data == false) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'the user alredy exist - try to login',
+                })
+            }
+        }
+
+        function errorCB(data) {
+            console.log(data);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row center_txt_div">
+            <div class="col">
+                <img src="../images/Airbnb-logo.png" />
+                <div>
+                    <input type="button" id="menuBtn" value="Back to the menu" />
+                </div>
+            </div>
+        </div>
+        <div class="row center_txt_div">
+            <div class="col">
+                <form id="mainForm">
+                    <div class="form-group">
+                        <label for="name"> Name </label>
+                        <input type="text" id="name" placeholder="Enter your name" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id"> ID </label>
+                        <input type="text" id="id" placeholder="Enter your ID" maxlength="9" required
+                               pattern="[0-9]{9}"
+                               oninvalid="this.setCustomValidity('ID must contain only 9 digits')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country"> Country </label>
+                        <input type="text" id="country" placeholder="Enter your country"
+                               pattern="^[a-zA-Zא-ת\s]+$"
+                               oninvalid="this.setCustomValidity('Country must contain letters and spaces only')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"> Email </label>
+                        <input type="email" id="email" placeholder="Enter your email" required
+                               pattern="^([A-Za-z\d\.-]+)@([A-Za-z\d-]+)\.([A-Za-z]{2,8})(\.[A-Za-z]{2,8})?$"
+                               oninvalid="this.setCustomValidity('Email must be in the right format')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Password"> Password </label>
+                        <input type="password" id="password" placeholder="Enter your password" minlength="6" required
+                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                               oninvalid="this.setCustomValidity('password must contain minimum 6 characters, at least one letter and one number')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber"> Phone number </label>
+                        <input type="tel" id="phoneNumber" placeholder="Enter your phone number. format should be ddd-ddd-dddd"
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                               oninvalid="this.setCustomValidity('Format should be ddd-ddd-dddd (digits only)')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <input type="submit" value="Submit" id="submit" />
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

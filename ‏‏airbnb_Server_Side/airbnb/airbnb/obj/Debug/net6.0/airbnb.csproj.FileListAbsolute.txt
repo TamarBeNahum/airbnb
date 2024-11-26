@@ -1,0 +1,54 @@
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\appsettings.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.exe
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.deps.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.runtimeconfig.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.pdb
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.AssemblyReference.cache
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.AssemblyInfoInputs.cache
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.AssemblyInfo.cs
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.CoreCompileInputs.cache
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\scopedcss\bundle\airbnb.styles.css
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.CopyComplete
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\refint\airbnb.dll
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.pdb
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.genruntimeconfig.cache
+C:\Users\tamar\Desktop\צד שרת\מטלות\airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\ref\airbnb.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\appsettings.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.exe
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.deps.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.runtimeconfig.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\airbnb.pdb
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.AssemblyReference.cache
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.AssemblyInfoInputs.cache
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.AssemblyInfo.cs
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.CoreCompileInputs.cache
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\scopedcss\bundle\airbnb.styles.css
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.csproj.CopyComplete
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\refint\airbnb.dll
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.pdb
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\airbnb.genruntimeconfig.cache
+C:\Users\tamar\Desktop\שנה ב\שנה ב - סמסטר ב\צד שרת\מטלות\EX 2 part B\‏‏airbnb_Server_Side\airbnb\airbnb\obj\Debug\net6.0\ref\airbnb.dll

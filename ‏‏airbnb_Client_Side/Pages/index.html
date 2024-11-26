@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--the json file-->
+    <script src="../JS/airBNB.js"></script>
+    <!--ajax call-->
+    <script src="../JS/ajaxCalls.js"></script>
+    <!--the CSS file-->
+    <link href="../CSS/StyleSheet.css" rel="stylesheet" />
+    <!--J-query-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    
+    <!--sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+    <title>AirBNB</title>
+
+    <script>
+
+        function init() {
+            //////////////// bootstrap container /////////////////////
+            let container = document.createElement("div");
+            document.body.appendChild(container);
+            container.className = "container";
+
+            //////////////// creating the header /////////////////////
+            let header = '<div class="row"> <div class="col" id="header_div"> </div> </div>';
+            container.innerHTML = header;
+
+            //add logo into the header
+            let user = JSON.parse(localStorage.getItem("current user"));
+            document.getElementById("header_div").innerHTML = `<img src="../images/Airbnb-logo.png" class="header_logo"/> 
+                                                               <div class="userNameDiv">Welcome ${user.name} ★</div>`;
+
+            //added button to the other page into the header
+            let btn_div = document.createElement("div");
+            document.getElementById("header_div").appendChild(btn_div);
+            let btn_header_get = document.createElement("input");
+            btn_header_get.type = "button";
+            btn_header_get.className = "btn_header";
+            btn_header_get.value = "getting apartments by fields";
+            btn_header_get.onmousedown = function () {
+                this.style.backgroundColor = "#fd5c63";
+            }
+            btn_header_get.onmouseup = function () {
+                this.style.backgroundColor = "#FFC0CB";
+            }
+            btn_header_get.onclick = function () {
+                window.location = "manage.html";
+            }
+            let btn_logOut = document.createElement("input");
+            btn_logOut.type = "button";
+            btn_logOut.className = "btn_header";
+            btn_logOut.value = "logOut";
+            btn_logOut.onmousedown = function () {
+                this.style.backgroundColor = "#fd5c63";
+            }
+            btn_logOut.onmouseup = function () {
+                this.style.backgroundColor = "#FFC0CB";
+            }
+            btn_logOut.onclick = function () {
+                Swal.fire({
+                    title: 'Are you sure you want to logOut?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#68bd86',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, log out'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.clear();
+                        window.location = "WelcomePage.html";
+                    }
+                })
+            }
+            btn_div.appendChild(btn_header_get);
+            btn_div.appendChild(btn_logOut);
+
+            //////////////// render the apartments cards /////////////////////
+            let div_row = document.createElement("div");
+            div_row.className = "row";
+            container.appendChild(div_row);
+            for (var i of Arr) {
+
+                let div_col = document.createElement("div");
+                div_col.classList += "col-12 col-sm-6 col-md-4 col-lg-3 mb-3";
+                div_row.appendChild(div_col);
+
+                //create the card
+                let card = document.createElement("div");
+                card.classList += "card border-danger";
+                div_col.appendChild(card);
+
+                //create the card-body
+                let card_body = document.createElement("div");
+                card_body.classList += "card-body";
+                card.appendChild(card_body);
+
+                //create & show the flat image
+                let img_div = document.createElement("div");
+                img_div.style.textAlign = "center";
+                let f_img = document.createElement("img");
+                f_img.src = i.picture_url;
+                f_img.className = "cardImg";
+                card_body.appendChild(img_div);
+                img_div.appendChild(f_img);
+
+                //show the flat title
+                let div_title = document.createElement("div");
+                div_title.className = "div_card_title";
+                div_title.innerText = i.name;
+                card_body.appendChild(div_title);
+
+                //show the flat rating
+                let div_rating = document.createElement("div");
+                div_rating.style.textAlign = "center";
+                let rating_img = document.createElement("img");
+                rating_img.classList += "rating_img";
+                let rate_num = i.review_scores_rating;
+                rating_img.src = renderStars(rate_num);
+                if (rate_num == undefined || rate_num == null) { rate_num = Math.floor(Math.random() * 5) + 1; }
+
+                div_rating.appendChild(rating_img);
+                div_rating.innerHTML += "<span>" + rate_num + "/5</span>";
+                card_body.appendChild(div_rating);
+
+                //show the litle details of the flat
+                let div_detaild = document.createElement("div");
+
+                let adress = i.neighbourhood;
+                if (adress == undefined || adress == null) { adress = "Amsterdam"; }
+
+                let bedrooms = i.bedrooms;
+                if (bedrooms == undefined || bedrooms == null) { bedrooms = "1"; }
+
+                div_detaild.innerHTML = "<u>Id</u>: " + i.id + "<br> <u>City</u>: Amsterdam <br> <u>addres</u>: "
+                    + adress + "<br> <u>number of bedrooms</u>: " + bedrooms + "<br> <u>Price</u>: " + i.price + "<br> <u>description</u>: ";
+                card_body.appendChild(div_detaild);
+
+                //show the description of the flat
+                let div_des = document.createElement("div");
+                div_des.innerHTML = i.description;
+                div_des.className = "description_divs";
+                card_body.appendChild(div_des);
+
+                //create & show the button to add the flat
+                let div_btn_addFlat = document.createElement("div");
+                div_btn_addFlat.style.textAlign = "center";
+                div_btn_addFlat.id = "div_btn_footer";
+                let btn_addFlat = document.createElement("input");
+                btn_addFlat.type = "button";
+                btn_addFlat.className = "btn_addFlat";
+                btn_addFlat.value = "Add an apartment";
+
+                btn_addFlat.onmousedown = function () {
+                    this.style.backgroundColor = "#FBCEB1";
+                }
+                btn_addFlat.onmouseup = function () {
+                    this.style.backgroundColor = "#FFE7E7";
+                }
+
+                //using closure to create a new lexical scope for each iteration of the loop
+                // which captures the current value of i and associates it with the button click event.
+                btn_addFlat.onclick = (function (flat) {
+                    return function () {
+                        const api = "https://localhost:7157/api/Flats";
+
+                        let newFlat = {
+                            id: parseInt(flat.id),
+                            city: "Amsterdam",
+                            address: adress,
+                            numOfRooms: parseInt(bedrooms),
+                            price: parseFloat(flat.price.replace('$', "").replace(' ', "")),
+                            imgUrl: flat.picture_url,
+                            apartmentName: flat.name,
+                            reviewScore: parseFloat(rate_num),
+                            description: flat.description
+                        };
+                        ajaxCall("POST", api, JSON.stringify(newFlat), successCB, errorCB);
+                    };
+                })(i);
+
+                div_btn_addFlat.appendChild(btn_addFlat);
+                //for the footer button
+                card_body.appendChild(div_btn_addFlat);
+                let space_div = document.createElement("div");
+                space_div.style.height = "35px";
+                card_body.appendChild(space_div);
+            }
+            function successCB(data) {
+                if (data == false) { alert("The apartment already exists - cannot be added"); }
+                else { alert("The apartment has been added"); }
+            }
+            function errorCB(err) {
+                console.log(err);
+            }
+        }
+
+        function renderStars(rate_num) {
+            if (rate_num == 1) { return "../images/rating_1.png" }
+            else if (rate_num == 2) { return "../images/rating_2.png" }
+            else if (rate_num == 3) { return "../images/rating_3.png" }
+            else if (rate_num > 3.40 && rate_num < 3.6) { return "../images/rating_3.5.png" }
+            else if (rate_num >= 4 && rate_num < 4.10) { return "../images/rating_4.png" }
+            else if (rate_num >= 4.10 && rate_num < 4.25) { return "../images/rating_4.2.png" }
+            else if (rate_num >= 4.25 && rate_num < 4.40) { return "../images/rating_4.3.png" }
+            else if (rate_num >= 4.40 && rate_num < 4.60) { return "../images/rating_4.5.png" }
+            else if (rate_num >= 4.60 && rate_num < 4.90) { return "../images/rating_4.7.png" }
+            else if (rate_num >= 4.90 && rate_num < 4.97) { return "../images/rating_4.9.png" }
+            else if (rate_num >= 4.97 && rate_num <= 5) { return "../images/rating_5.png" }
+        }
+    </script>
+
+</head>
+<body onload="init()">
+    
+</body>
+</html>

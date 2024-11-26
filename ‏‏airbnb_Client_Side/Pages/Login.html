@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration form</title>
+    <!--bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!--CSS-->
+    <link href="../CSS/StyleSheetForm.css" rel="stylesheet" />
+
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!--ajax call-->
+    <script src="../JS/ajaxCalls.js"></script>
+
+    <!--sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            if (true) {
+
+            }
+            $('#menuBtn').click(function () {
+                window.location = "WelcomePage.html";
+            });
+            
+            $("#mainForm").submit(submitToTheServer);
+        });
+
+
+        function submitToTheServer() {
+            logInCheck();
+            return false;
+        }
+
+        function logInCheck() {
+            successCB("guest")
+            // let email = $("#email").val();
+            // let pass = $("#password").val();
+            // const api = `https://proj.ruppin.ac.il/cgroup14/test2/tar1/api/Users/PostEP/email/${email}/password/${pass}`;
+            // ajaxCall("POST", api, "", successCB, errorCB);
+        }
+
+        function successCB(data) {
+            localStorage.setItem("current user", JSON.stringify(data));
+            Swal.fire('Connecting..!', 'you will be directed to the home page...★', 'success').
+                then(function (result) { window.location = "index.html"; });
+        }
+
+        //catch the exception that in the method "postByEmailPass" on the server
+        function errorCB(data) {
+            console.log(data);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'The name or password is incorrect - try again',
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row center_txt_div">
+            <div class="col">
+                <img src="../images/Airbnb-logo.png" />
+                <div>
+                    <input type="button" id="menuBtn" value="Back to the menu" />
+                </div>
+            </div>
+        </div>
+        <div class="row center_txt_div">
+            <div class="col">
+
+                <form id="mainForm">
+
+                    <div class="form-group">
+                        <label for="email"> Email </label>
+                        <input type="email" id="email" placeholder="Enter your email" required
+                               pattern="^([A-Za-z\d\.-]+)@([A-Za-z\d-]+)\.([A-Za-z]{2,8})(\.[A-Za-z]{2,8})?$"
+                               oninvalid="this.setCustomValidity('Email must be in the right format')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Password"> Password </label>
+                        <input type="password" id="password" placeholder="Enter your password" minlength="6" required
+                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                               oninvalid="this.setCustomValidity('password must contain minimum 6 characters, at least one letter and one number')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+
+                    <input type="submit" value="Submit" id="submit" />
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
